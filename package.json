@@ -1,0 +1,32 @@
+{
+    "name": "JATE",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start:dev": "concurrently \"cd client && npm run build\" \"cd server && npm run server\" ",
+        "start": "npm run build && cd server && node server.js",
+        "server": "cd server node server.js --ignore client",
+        "build": "cd client && npm run build && npm run start",
+        "install": "cd server && npm i && cd ../client && npm i",
+        "client": "cd client && npm start"
+    },
+    "keywords": [],
+    "author": "EhsanAsh",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.23.3",
+        "concurrently": "^8.2.2",
+        "eslint": "^8.54.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.29.0",
+        "eslint-plugin-n": "^16.3.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "prettier": "3.1.0"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "if-env": "^1.0.4"
+    }
+}

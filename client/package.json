@@ -1,0 +1,39 @@
+{
+    "name": "JATE",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "webpack-dev-server",
+        "build": "webpack --mode production",
+        "start": "webpack --watch"
+    },
+    "author": "EhsanAsh",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.23.3",
+        "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+        "@babel/plugin-transform-runtime": "^7.23.4",
+        "@babel/preset-env": "^7.23.3",
+        "@babel/runtime": "^7.23.4",
+        "babel-loader": "^9.1.3",
+        "css-loader": "^6.8.1",
+        "html-webpack-plugin": "^5.5.3",
+        "http-server": "^0.11.1",
+        "mini-css-extract-plugin": "^2.7.6",
+        "style-loader": "^3.3.3",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.0.0",
+        "webpack-pwa-manifest": "^4.3.0",
+        "workbox-cacheable-response": "^7.0.0",
+        "workbox-expiration": "^7.0.0",
+        "workbox-precaching": "^7.0.0",
+        "workbox-routing": "^7.0.0",
+        "workbox-strategies": "^7.0.0",
+        "workbox-webpack-plugin": "^7.0.0"
+    },
+    "dependencies": {
+        "idb": "^7.1.1",
+        "workbox-window": "^7.0.0",
+        "code-mirror-themes": "^1.0.0"
+    }
+}

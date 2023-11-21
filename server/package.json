@@ -1,0 +1,15 @@
+{
+    "name": "JATE",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "server": "node server.js --ignore client"
+    },
+    "keywords": [],
+    "author": "EhsanAsh",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}
