@@ -41,6 +41,26 @@ module.exports = () => {
                 swDest: 'sw.js',
             }),
 
+            // adding webpack pwa manifest plugin to create manifest file
+            new WebpackPwaManifest({
+                name: 'Just Another Text Editor',
+                short_name: 'J.A.T.E',
+                description: 'Takes notes with JavaScript syntax highlighting!',
+                background_color: '#225ca3',
+                theme_color: '#225ca3',
+                start_url: '/',
+                publicPath: '/',
+                display: 'standalone',// this will make the app look like a native app
+                Orientation: 'portrait',
+                icons: [
+                    {
+                        src: path.resolve('src/images/logo.png'),
+                        sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+                        destination: path.join('src', 'icons'),
+                    },
+                ],
+            }),
+
         ],
 
         // setting rules for webpack to follow when building project files
