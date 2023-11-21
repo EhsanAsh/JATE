@@ -1,0 +1,22 @@
+# ignore all .md
+*.md
+
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# Ignore all files in the build directory
+**/build/*
+
+# Ignore all log files
+**/*.log
+
+# Ignore all files in the dist directory
+/client/dist/*
+
+# Ignore all files in the tmp directory
+**/tmp/*
+
+# Ignore package-lock.json
+**/package-lock.json
