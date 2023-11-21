@@ -1,30 +1,50 @@
+// Decs: Creating a webpack config file. This is the file that webpack will use to build our project.
+// This file will be used to create a bundle.js file that will be used in our index.html file.
+// ===============================================================
+
+// Importing plugins
+// ===============================================================
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
+// ===============================================================
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
 
 module.exports = () => {
-  return {
-    mode: 'development',
-    entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js'
-    },
-    output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
-    },
-    plugins: [
-      
-    ],
+    return {
+        mode: 'development',
+        entry: {
+            main: './src/js/index.js',
+            install: './src/js/install.js'
+        },
+        output: {
+            filename: '[name].bundle.js',
+            path: path.resolve(__dirname, 'dist'),
+        },
+        plugins: [
 
-    module: {
-      rules: [
-        
-      ],
-    },
-  };
+            new HtmlWebpackPlugin({
+                template: './index.html',
+                title: 'J.A.T.E'
+            }),
+
+            new MiniCssExtractPlugin(),
+
+            new InjectManifest({
+                swSrc: './src-sw.js',
+                swDest: 'sw.js',
+            }),
+
+        ],
+
+        module: {
+            rules: [
+
+            ],
+        },
+    };
 };
