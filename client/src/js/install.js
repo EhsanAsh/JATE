@@ -18,6 +18,8 @@ window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     // Stash the event so it can be triggered later. the event object here is a BeforeInstallPromptEvent object which contains a prompt() method and a userChoice property that returns a Promise that resolves to a DOMString indicating what choice the user made.
     deferredPrompt = event;
+    console.log('beforeinstallprompt fired');
+    console.log(event);
     // Update UI to notify the user they can add to home screen
     butInstall.style.display = 'block';
 });
@@ -29,8 +31,11 @@ butInstall.addEventListener('click', async () => {
 
     // Show the install prompt
     deferredPrompt.prompt();
+    console.log('butInstall-clicked');
+    console.log(deferredPrompt.prompt());
     // Wait for the user to respond to the prompt
     const { outcome } = await deferredPrompt.userChoice;
+    console.log(outcome);
     if (outcome === 'accepted') {
         console.log('User accepted the install prompt');
     } else {
