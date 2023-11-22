@@ -39,6 +39,11 @@ module.exports = () => {
             new InjectManifest({
                 swSrc: './src-sw.js',
                 swDest: 'sw.js',
+                globDirectory: './dist',
+                globPatterns: [
+                    '**/*.{html,js,css}',
+                    'offline.html',
+                ],
             }),
 
             // adding webpack pwa manifest plugin to create manifest file
@@ -56,7 +61,7 @@ module.exports = () => {
                     {
                         src: path.resolve('src/images/logo.png'),
                         sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
-                        destination: path.join('src', 'icons'),
+                        destination: path.join('assets', 'icons'),
                     },
                 ],
             }),
