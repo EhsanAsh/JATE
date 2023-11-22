@@ -39,11 +39,6 @@ module.exports = () => {
             new InjectManifest({
                 swSrc: './src-sw.js',
                 swDest: 'sw.js',
-                globDirectory: './dist',
-                globPatterns: [
-                    '**/*.{html,js,css}',
-                    'offline.html',
-                ],
             }),
 
             // adding webpack pwa manifest plugin to create manifest file
