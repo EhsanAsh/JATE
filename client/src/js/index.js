@@ -10,10 +10,10 @@ const loadSpinner = () => {
     const spinner = document.createElement('div');
     spinner.classList.add('spinner');
     spinner.innerHTML = `
-  <div class="loading-container">
-  <div class="loading-spinner" />
-  </div>
-  `;
+        <div class="loading-container">
+        <div class="loading-spinner" />
+        </div>
+    `;
     main.appendChild(spinner);
 };
 
@@ -28,6 +28,7 @@ if ('serviceWorker' in navigator) {
     // register workbox service worker
     const workboxSW = new Workbox('/src-sw.js');
     workboxSW.register();
+    console.log('Service worker registered! 😎');
 } else {
     console.error('Service workers are not supported in this browser.');
 }
