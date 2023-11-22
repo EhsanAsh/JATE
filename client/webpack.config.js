@@ -7,6 +7,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 // ===============================================================
@@ -39,6 +40,13 @@ module.exports = () => {
             new InjectManifest({
                 swSrc: './src-sw.js',
                 swDest: 'sw.js',
+            }),
+
+            // adding copy webpack plugin to copy offline html file to dist folder
+            new CopyWebpackPlugin({
+                patterns: [
+                    { from: './offline.html', to: 'offline.html' },
+                ],
             }),
 
             // adding webpack pwa manifest plugin to create manifest file
