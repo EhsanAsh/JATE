@@ -60,6 +60,7 @@ module.exports = () => {
                 publicPath: '/',
                 display: 'standalone',// this will make the app look like a native app
                 Orientation: 'portrait',
+                fingerprints: false, // this will make sure that the manifest file is not hashed because we need to get the same name as we defined in the html file for images.
                 icons: [
                     {
                         src: path.resolve('src/images/logo.png'),
@@ -82,7 +83,7 @@ module.exports = () => {
 
                 {
                     test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-                    use: 'asset/resource',
+                    type: 'asset/resource',
                 },
 
                 {
