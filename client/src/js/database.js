@@ -60,7 +60,7 @@ export const getDb = async () => {
         const request = store.getAll();
         const result = await request;
         console.log('Data retrieved from the database', result);
-        return result;
+        return result.length > 0 ? result[result.length - 1].jate : null;
     } catch (error) {
         console.error('Error getting data from database:', error);
     }

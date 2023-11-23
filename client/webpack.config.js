@@ -7,6 +7,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 // ===============================================================
@@ -38,16 +39,21 @@ module.exports = () => {
             // adding inject manifest plugin to inject manifest file into service worker
             new InjectManifest({
                 swSrc: './src-sw.js',
-                swDest: 'sw.js',
-                globDirectory: './dist',
-                globPatterns: [
-                    '**/*.{html,js,css}',
-                    'offline.html',
+                swDest: 'src-sw.js',
+            }),
+
+            // adding copy webpack plugin to copy offline html file to dist folder
+            new CopyWebpackPlugin({
+                patterns: [
+                    { from: './offline.html', to: 'offline.html' },
+                    { from: './favicon.ico', to: 'favicon.ico' }, // this will copy favicon to dist folder
+                    { from: './src/images', to: 'assets/images' }, // this will copy images to dist folder
                 ],
             }),
 
             // adding webpack pwa manifest plugin to create manifest file
             new WebpackPwaManifest({
+                id: '/',
                 name: 'Just Another Text Editor',
                 short_name: 'J.A.T.E',
                 description: 'Takes notes with JavaScript syntax highlighting!',
@@ -57,6 +63,8 @@ module.exports = () => {
                 publicPath: '/',
                 display: 'standalone',// this will make the app look like a native app
                 Orientation: 'portrait',
+                // used (https://www.npmjs.com/package/webpack-pwa-manifest) as the reference
+                fingerprints: false, // this will make sure that the manifest file is not hashed because we need to get the same name as we defined in the html file for images.
                 icons: [
                     {
                         src: path.resolve('src/images/logo.png'),
@@ -79,7 +87,7 @@ module.exports = () => {
 
                 {
                     test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-                    use: 'asset/resource',
+                    type: 'asset/resource',
                 },
 
                 {

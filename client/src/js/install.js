@@ -13,6 +13,9 @@ const butInstall = document.getElementById('buttonInstall');
 // =================================================
 let deferredPrompt;
 
+// Initially disable the install button
+butInstall.disabled = true;
+
 window.addEventListener('beforeinstallprompt', (event) => {
     // Prevent Chrome from automatically showing the prompt
     event.preventDefault();
@@ -20,6 +23,8 @@ window.addEventListener('beforeinstallprompt', (event) => {
     deferredPrompt = event;
     console.log('beforeinstallprompt fired');
     console.log(event);
+    // Enable the install button when the `beforeinstallprompt` event fires
+    butInstall.disabled = false;
     // Update UI to notify the user they can add to home screen
     butInstall.style.display = 'block';
 });
@@ -28,6 +33,12 @@ window.addEventListener('beforeinstallprompt', (event) => {
 // Implement a click event handler on the `butInstall` element
 // =================================================
 butInstall.addEventListener('click', async () => {
+
+    // Check if deferredPrompt is defined
+    if (!deferredPrompt) {
+        console.log('The beforeinstallprompt event has not yet fired.');
+        return;
+    }
 
     // Show the install prompt
     deferredPrompt.prompt();
