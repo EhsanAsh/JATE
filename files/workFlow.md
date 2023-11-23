@@ -45,7 +45,7 @@
 - *WHEN I* register a service worker,
 - *THEN I* should have my static assets pre cached upon loading along with subsequent pages and static assets.
 
-- *WHEN I* deploy to Heroku
+- *WHEN I* deploy to render
 - *THEN I* should have proper build scripts for a webpack application
 
 ---
@@ -80,11 +80,11 @@
   - Debug any issues that arise.
 
 7. Deployment Preparation:
-  - Create build scripts suitable for Heroku deployment.
+  - Create build scripts suitable for render deployment.
   - Test the build process and fix any deployment-related issues.
 
-8. Deployment to Heroku:
-  - Deploy the application to Heroku.
+8. Deployment to render:
+  - Deploy the application to render.
   - Perform post-deployment testing to ensure functionality.
 
 ---
@@ -97,8 +97,8 @@
 4. Integrate IndexedDB for data storage.
 5. Configure webpack and its plugins.
 6. Implement and test the service worker.
-7. Prepare and test build scripts for Heroku.
-8. Deploy the application to Heroku.
+7. Prepare and test build scripts for render.
+8. Deploy the application to render.
 
 ---
 
@@ -107,7 +107,7 @@
 - The application follows a typical client-server model.
 - Use of modern web technologies (IndexedDB, service workers).
 - Integration of webpack for module bundling and asset management.
-- Deployment pattern compatible with cloud platforms like Heroku.
+- Deployment pattern compatible with cloud platforms like render.
 
 ---
 
@@ -136,8 +136,8 @@ registerServiceWorker();
 setupPreCaching();
 
 // Deployment Preparation
-prepareHerokuBuildScripts();
+prepareRenderBuildScripts();
 
 // Deployment
-deployToHeroku();
+deployToRender();
 
