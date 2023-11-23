@@ -53,7 +53,7 @@ registerRoute(
     ({ request }) => request.mode === 'navigate',
     async ({ event }) => {
         try {
-            return await pageCache.handle({ event });
+            return await pageCache.handle({ request: event.request, event });
         } catch (error) {
             console.error('Error while fetching page', error);
             return caches.match('/offline.html');
@@ -84,7 +84,7 @@ registerRoute(
     staticMatch,
     async ({ event }) => {
         try {
-            return await staticAssetCache.handle({ event });
+            return await staticAssetCache.handle({ request: event.request, event});
         } catch (error) {
             console.error('Error while fetching static assets', error);
             return caches.match('/offline.html');
@@ -115,7 +115,7 @@ registerRoute(
     imageMatch,
     async ({ event }) => {
         try {
-            return await imageCache.handle({ event });
+            return await imageCache.handle({ request: event.request, event });
         } catch (error) {
             console.error('Error while fetching images', error);
             return caches.match('/offline.html');
